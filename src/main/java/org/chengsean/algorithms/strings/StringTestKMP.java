@@ -8,7 +8,13 @@ import org.junit.Test;
  * @date 2019-06-09 12:27
  */
 public class StringTestKMP {
+    /**
+     *源字符串
+     */
     private static final String SOURCE_STRING = "赵钱孙李，周吴郑王。冯陈褚卫，蒋沈韩杨。朱秦尤许，何吕施张。";
+    /**
+     *查找的子字符串
+     */
     private static final String SEARCH_STRING = "赵钱孙李周";
 
     /**
