@@ -1,11 +1,15 @@
-package org.chengsean.algorithms.stack;
+package org.chengsean.algorithms.stacks;
 
 import org.junit.Test;
 
 import java.util.Stack;
 
+/**
+ *  栈的用法：进制转换
+ * @auther 程绍壮
+ * @date 2019-06-09 21:55
+ */
 public class StackTestDecimal {
-
 
     /***
      * 进制转换

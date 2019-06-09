@@ -1,9 +1,14 @@
-package org.chengsean.algorithms.stack;
+package org.chengsean.algorithms.stacks;
 
 import org.junit.Test;
 
 import java.util.Stack;
 
+/**
+ * 栈的用法：检查括弧、中括号、大括号书写格式
+ * @auther 程绍壮
+ * @date 2019-06-09 21:45
+ */
 public class StackTestBrackets {
 
     /**

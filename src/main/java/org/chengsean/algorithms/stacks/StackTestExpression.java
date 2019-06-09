@@ -1,33 +1,32 @@
-package org.chengsean.algorithms.stack;
-
-
+package org.chengsean.algorithms.stacks;
 
 import org.chengsean.algorithms.util.NumberUtils;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Stack;
 
 /**
- * shu(栈)
- * @Auther: 程绍壮
- * @Date: 2018/11/11 23:43
- * @Version: 1.0
+ * 栈的用法：表达式运算
+ * @auther 程绍壮
+ * @date 2019-06-09 22:09
  */
 public class StackTestExpression {
-
-    static final int BRACKETS_LEVEL = 3;
-    static final int MULTIPLY_DIVIDE_LEVEL = 2;
-    static final int PLUS_SUBTRACT_LEVEL = 1;
-    static final int EXP_OPEN_CLOSE_LEVEL = 0;
+    private static final int BRACKETS_LEVEL = 3;
+    private static final int MULTIPLY_DIVIDE_LEVEL = 2;
+    private static final int PLUS_SUBTRACT_LEVEL = 1;
+    private static final int EXP_OPEN_CLOSE_LEVEL = 0;
     // 加法操作符
-    static final char PLUS = '+';
+    private static final char PLUS = '+';
     // 减法操作符
-    static final char SUBTRACT = '-';
+    private static final char SUBTRACT = '-';
     // 乘法操作符
-    static final char MULTIPLY = '*';
+    private static final char MULTIPLY = '*';
     // 除法操作符
-    static final char DIVIDE = '/';
+    private static final char DIVIDE = '/';
     // 表达式起始和结束符
-    static final char EXP_OPEN_CLOSE = '#';
+    private static final char EXP_OPEN_CLOSE = '#';
     // 表达式
     private static final String EXP = "8*7+(5-6/3)*4";
     // 后缀表达式
@@ -37,7 +36,7 @@ public class StackTestExpression {
     // 操作数栈
     private Stack<Object> operandStack;
 
-    @org.junit.Before
+    @Before
     public void initObjects() {
         this.suffixExp = new StringBuffer(EXP.length());
         this.operatorStack = new Stack<>();
@@ -45,8 +44,7 @@ public class StackTestExpression {
         this.operandStack = new Stack<>();
     }
 
-
-    @org.junit.Test
+    @Test
     public void testExp2SuffixExp() {
         char[] chars = EXP.toCharArray();
         for (int i = 0; i < chars.length; i++) {
@@ -86,25 +84,24 @@ public class StackTestExpression {
             char operandChar2 = (Character) this.operandStack.pop();
             char operandChar1 = (Character)this.operandStack.pop();
             System.out.println(Double.isNaN(0));
-           if (NumberUtils.isAsciiNumeric(operandChar2))
-               operandNumber2 = Double.valueOf(String.valueOf(operandChar2));
-           if (NumberUtils.isAsciiNumeric(operandChar1))
-               operandNumber1 = Double.valueOf(String.valueOf(operandChar1));
-           if (ch == PLUS)
-               this.operandStack.push(operandNumber1 + operandNumber2);
-           if (ch == SUBTRACT)
-               this.operandStack.push(operandNumber1 - operandNumber2);
-           if (ch == MULTIPLY)
-               this.operandStack.push(operandNumber1 * operandNumber2);
-           if (ch == DIVIDE){
-               if (operandNumber1 == 0)
-                   throw new IllegalArgumentException(String.valueOf(operandNumber1));
-               this.operandStack.push(operandNumber1 / operandNumber2);
-           }
+            if (NumberUtils.isAsciiNumeric(operandChar2))
+                operandNumber2 = Double.valueOf(String.valueOf(operandChar2));
+            if (NumberUtils.isAsciiNumeric(operandChar1))
+                operandNumber1 = Double.valueOf(String.valueOf(operandChar1));
+            if (ch == PLUS)
+                this.operandStack.push(operandNumber1 + operandNumber2);
+            if (ch == SUBTRACT)
+                this.operandStack.push(operandNumber1 - operandNumber2);
+            if (ch == MULTIPLY)
+                this.operandStack.push(operandNumber1 * operandNumber2);
+            if (ch == DIVIDE){
+                if (operandNumber1 == 0)
+                    throw new IllegalArgumentException(String.valueOf(operandNumber1));
+                this.operandStack.push(operandNumber1 / operandNumber2);
+            }
         }
     }
-
-    @org.junit.After
+    @After
     public void clear() {
         if (suffixExp != null)
             this.suffixExp.setLength(0);

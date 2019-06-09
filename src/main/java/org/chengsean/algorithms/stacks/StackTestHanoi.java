@@ -1,13 +1,23 @@
-package org.chengsean.algorithms.stack;
+package org.chengsean.algorithms.stacks;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+/**
+ * 栈的用法：递归（汉诺塔）
+ * @auther 程绍壮
+ * @date 2019-06-09 22:10
+ */
 public class StackTestHanoi {
+
     private final Map<Character, Stack<Integer>> stackMap = new HashMap<>();
 
-    private StackTestHanoi() {
+    @Before
+    public void init() {
         Stack<Integer> integers = new Stack<>();
         integers.push(3);
         integers.push(2);
@@ -25,7 +35,8 @@ public class StackTestHanoi {
      * @param y 辅助座
      * @param z 目的座
      */
-    private void hanoi(int n, char x, char y, char z) {
+    @Test
+    public void hanoi(int n, char x, char y, char z) {
         if (n == 1) {
             move(x, z);
         } else {
